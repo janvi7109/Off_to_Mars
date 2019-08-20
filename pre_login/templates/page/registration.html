@@ -48,7 +48,13 @@
 </style>
 <body>
     <div class="container justify-content-center">
-        <div class="row justify-content-center">
+        <h2 style="color:#f0f8ff">Enter your details</h2>
+        <form method="POST" action="">
+            {% csrf_token %}
+            {{form}}
+            <input type="submit" value="Submit">
+        </form>
+        <!--<div class="row justify-content-center">
             <h2 style="text-align:center;color:white">Registration</h2>
         </div>
         <div class="row justify-content-center">
@@ -84,7 +90,7 @@
 
         {% comment %} <div class="row justify-content-center" align="center">
         <a href ="">Go back to login</a>
-        </div>  {% endcomment %}
+        </div>  {% endcomment %}-->
     </div>
     
 
