@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from .forms import RegistrationForm
+from .forms import LoginForm
+from .models import Personal_Details
 # from .forms import RegistrationForm
 # Create your views here.
 def home(request):
@@ -15,7 +17,20 @@ def register(request):
         form = RegistrationForm()   
     cont = {'form':form}
     return render(request,'page/registration.html',cont)
-   
+
+def login(request):
+    if request.method == "POST":
+        form = LoginForm(request.POST) 
+        if form.is_valid():
+            print(form.cleaned_data)
+            obj = Personal_Details.objects.get(Email=form.cleaned_data['Email'])
+            if(obj):
+                print(obj['Age'])
+    else:
+        form = LoginForm()
+    cont = {'form':form}
+    return render(request,'page/login.html',cont)
+
 # def showform(request):
 #     form= BlogCommentsForm(request.POST or None)
 #     if form.is_valid():
