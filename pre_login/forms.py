@@ -24,7 +24,6 @@ class RegistrationForm(forms.ModelForm):
     Password = forms.CharField(label='',widget=forms.PasswordInput(attrs={'placeholder':'Password'}))
     class Meta:
         model = Personal_Details
-        # username = forms.CharField("abc")
         fields = ["username","Email","Age","City","State","Country","Occupation","Password"]#,"confirm password"]
 
 class LoginForm(forms.Form):

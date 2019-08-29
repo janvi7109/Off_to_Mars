@@ -14,6 +14,9 @@ class Personal_Details(models.Model):
     Password = models.CharField(max_length = 50)
     '''widget=forms.PasswordInput(),null=False)'''
 
+    def __str__(self):
+        return self.Email
+
 # def my_view(request):
 #     username = request.POST['username']
 #     password = request.POST['password']

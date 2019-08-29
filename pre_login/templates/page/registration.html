@@ -2,96 +2,73 @@
 
 {% block content %}
 <style>
-.container {
-            position: center;
-            border-radius: 40px;
-            background-color: ##F2BEAB;
-            padding: 40px 20px 50px 140px;
-            height: 300px;
-            margin: 200px;
-            align: center;
-            opacity = 0.1;
-            filter: alpha(opacity=10);
-            align-content:center;
-            {% comment %} margin-left = 1000px; {% endcomment %}
-        } 
+    #mainbox
+    {
+        position: relative;
+        border-radius: 40px;
+        border-style: ridge;
+        height: 37em;
+        width: 35em;
+        margin: auto;
+        margin-top: 3em;
+        align-content:center;
+        padding: 3em;
+        padding-top: 1em;
+        background-color: rgb(0,0,0,0.4);
+    } 
 
-        input,
-        .btn {
-        width: 50%;
-        padding: 12px;
+    input,.btn 
+    {
+        /* padding: 12px; */
         border: none;
         border-radius: 4px;
-        margin: 5px;
+        margin-left: auto;
+        margin-right: auto;
         opacity: 0.85;
         display: inline-block;
-        font-size: 17px;
+        font-size: 1em;
         line-height: 20px;
-        text-decoration: none; /* remove underline from anchors */
-        }
+        text-decoration: none;
+    }
 
-        input:hover,
-        .btn:hover {
+    input:hover,.btn:hover 
+    {
         opacity: 1;
-        }
+    }
 
-        input[type=submit] {
+    input[type=submit] 
+    {
         background-color: #DC381E;
         color: white;
         cursor: pointer;
-        {% comment %} align: center; {% endcomment %}
-        }
+    }
 
-        input[type=submit]:hover {
-        background-color: #DC381E;
-        }
+    input[type=submit]:hover 
+    {
+    background-color: #DC381E;
+    }
+
+    .allign
+    {
+        margin:auto;
+        text-align: center;
+    }
 </style>
-<body>
-    <div class="container justify-content-center">
-        <h2 style="color:#f0f8ff">Enter your details</h2>
-        <form method="POST" action="">
-            {% csrf_token %}
-            {{form}}
-            <input type="submit" value="Submit">
-        </form>
-        <!--<div class="row justify-content-center">
-            <h2 style="text-align:center;color:white">Registration</h2>
+<body stye="padding: 5em 0">
+    <div class="container" id="mainbox">
+        <div class="row">
+            <div class="col-12 allign">
+                <h2 style="color:#f0f8ff">Enter your details</h2>
+            </div>
         </div>
-        <div class="row justify-content-center">
-            <input type="text" name="username" placeholder="Name" required>
+        <div class="row">
+            <div class="col-12 allign">
+                <form method="POST" action="">
+                    {% csrf_token %}
+                    {{form}}
+                    <input type="submit" value="Submit">
+                </form>
+            </div>
         </div>
-        <div class="row justify-content-center">
-            <input type="email" name="Email" placeholder="Email" required>
-        </div>
-        <div class="row justify-content-center">
-            <input type="number" name="Age" placeholder="Age" required> 
-        </div>
-        <div class="row justify-content-center">
-            <input type="text" name="City" placeholder="City" required> 
-        </div>
-        <div class="row justify-content-center">
-            <input type="text" name="State" placeholder="State" required> 
-        </div>
-        <div class="row justify-content-center">
-            <input type="text" name="Country" placeholder="Country" required> 
-        </div>
-        <div class="row justify-content-center">
-            <input type="text" name="occupation" placeholder="Occupation" required> 
-        </div>
-        <div class="row justify-content-center">
-            <input type="password" name="password" placeholder="Password" required> 
-        </div>
-        <div class="row justify-content-center">
-            <input type="password" name="confirm password" placeholder="Confirm Password" required> 
-        </div>
-        <div class="row justify-content-center">
-            <input type="submit" value="Register">
-        </div>
-
-        {% comment %} <div class="row justify-content-center" align="center">
-        <a href ="">Go back to login</a>
-        </div>  {% endcomment %}-->
     </div>
-    
-
 {% endblock %}
