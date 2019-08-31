@@ -1,6 +1,7 @@
 from django import forms
 from django.db import models
 from .models import Questions
+from django.forms.widgets import RadioSelect
 
 # class DesignForm(models.Model):
 #     username = models.CharField(max_length = 100)
@@ -25,7 +26,12 @@ class QuestionForm(forms.ModelForm):
     class Meta:
         model = Questions
         # username = forms.CharField("abc")
-        fields = ["question","option1","option2","option3","option4","answer"]#,"Occupation","Password"]#,"confirm password"]
+        fields = ["question","option1","option2","option3","option4","answer"]
+        Radio_Choices = ["option1", "option2", "option3", "option4"]
+        radio = forms.ChoiceField( widget=RadioSelect(), choices=Radio_Choices)
+
+
+        #,"Occupation","Password"]#,"confirm password"]
     # def __init__(self, data, questions, *args, **kwargs):
     #     self.questions = questions
     #     for question in questions:

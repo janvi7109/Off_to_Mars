@@ -133,37 +133,37 @@
         {% endblock %} -->
     <div class="container2">
         <div class="row">
-            <h2 style="color:white">Question : {{ obj.0.question }} </h2>
+            <h2 style="color:white">Question : {{ obj.2.question }} </h2>
         </div>
         <br>
         <br>
         <div class="row justify-content-center" id="options">
         <form action="" method="POST">
             {% csrf_token %}
-            <label class="container" style="color:white"> {{ obj.0.option1 }}
+            <label class="container" style="color:white"> {{ obj.2.option1 }}
             <input type="radio" name="radio" id= "o1" value="option1">
             <span class="checkmark"></span>
             </label>
-            <label class="container" style="color:white">{{ obj.0.option2 }}
+            <label class="container" style="color:white">{{ obj.2.option2 }}
             <input type="radio" name="radio" id= "o2" value="option2">
             <span class="checkmark"></span>
             </label>
-            <label class="container" style="color:white">{{ obj.0.option3 }}
+            <label class="container" style="color:white">{{ obj.2.option3 }}
             <input type="radio" name="radio" id= "o3" value="option3">
             <span class="checkmark"></span>
             </label>
-            <label class="container" style="color:white">{{ obj.0.option4 }}
+            <label class="container" style="color:white">{{ obj.2.option4 }}
             <input type="radio" name="radio" id= "o4" value="option4">
             <span class="checkmark"></span>
             </label>
             <div class="row justify-content-center">
-                <a href="ques2.html"><input type="submit" value="Next"></a>
+                    <a href="ques4.html"><input type="submit" value="Next"></a>
             </div>
         </form>
     </div>
     <br>
     {% comment %} <div class="row justify-content-center">
-                <a href="ques2.html"><input type="submit" value="Next"></a>
+                <a href="ques4.html"><input type="submit" value="Next"></a>
     </div> {% endcomment %}
 </body>
 {% endblock %}
