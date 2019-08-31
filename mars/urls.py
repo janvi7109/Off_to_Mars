@@ -19,4 +19,5 @@ from django.conf.urls import url, include
 urlpatterns = [
     url(r'admin/', admin.site.urls),
     url(r'^',include('pre_login.urls')),
+    url(r'^quiz/',include('post_login.urls')),
 ]

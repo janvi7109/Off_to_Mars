@@ -88,33 +88,33 @@ background-color: #DC381E;
     <div class="container2">
         <div class="row">
           <div class="col-10">
-            <h2 style="color:white;font-size: 2em">Question : {{ obj.0.question }}</h2>
+            <h2 style="color:white;font-size: 2em">Question : {{ obj.2.question }}</h2>
           </div>
         </div>
         <div class="row">
           <div class="col-10">
-              <form action="" method="POST">
-                  {% csrf_token %}
-                  <label class="container" style="color:white"> {{ obj.0.option1 }}
-                  <input type="radio" name="radio" id= "o1" value="option1">
-                  <span class="checkmark"></span>
-                  </label>
-                  <label class="container" style="color:white">{{ obj.0.option2 }}
-                  <input type="radio" name="radio" id= "o2" value="option2">
-                  <span class="checkmark"></span>
-                  </label>
-                  <label class="container" style="color:white">{{ obj.0.option3 }}
-                  <input type="radio" name="radio" id= "o3" value="option3">
-                  <span class="checkmark"></span>
-                  </label>
-                  <label class="container" style="color:white">{{ obj.0.option4 }}
-                  <input type="radio" name="radio" id= "o4" value="option4">
-                  <span class="checkmark"></span>
-                  </label>
-                  <div class="row justify-content-center">
-                      <a href="ques2.html"><input type="submit" value="Next"></a>
-                  </div>
-              </form>
+                <form action="" method="POST">
+                        {% csrf_token %}
+                        <label class="container" style="color:white"> {{ obj.2.option1 }}
+                        <input type="radio" name="radio" id= "o1" value="option1">
+                        <span class="checkmark"></span>
+                        </label>
+                        <label class="container" style="color:white">{{ obj.2.option2 }}
+                        <input type="radio" name="radio" id= "o2" value="option2">
+                        <span class="checkmark"></span>
+                        </label>
+                        <label class="container" style="color:white">{{ obj.2.option3 }}
+                        <input type="radio" name="radio" id= "o3" value="option3">
+                        <span class="checkmark"></span>
+                        </label>
+                        <label class="container" style="color:white">{{ obj.2.option4 }}
+                        <input type="radio" name="radio" id= "o4" value="option4">
+                        <span class="checkmark"></span>
+                        </label>
+                        <div class="row justify-content-center">
+                            <a href="ques2.html"><input type="submit" value="Next"></a>
+                        </div>
+                    </form>
           </div>
         </div>
     </div>    

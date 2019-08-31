@@ -41,7 +41,20 @@
 <body>
     <div class="container">
         <div class="row justify-content-center">
-            <h2 style="text-align:center;color:white">Quiz Details</h2>
+
+        {% comment %} {% set i=0 %} {% endcomment %}
+        {% comment %} {% for i in range({{ Questions.objects.count }})  %} {% endcomment %}
+        {% comment %} {% for i in range.Questions.objects.count %} {% endcomment %}
+        {% comment %} {% with i=0 %}
+        {% while i<Questions.objects.count: %}
+                <h2 style="text-align:center;color:white">Question : {{ obj.i.question }}</h2>
+                {% i+=1 %}
+        {% endwhile %}
+        
+        {% endwith %} {% endcomment %}
+        <h2 style="text-align:center;color:white">Question : </h2>
+        {% comment %} {% endfor %} {% endcomment %}
+        {% comment %} {% endfor %} {% endcomment %}
         </div>
     </div>
 
@@ -49,17 +62,28 @@
         {% comment %} <div class="row justify-content-center">
             <h2 style="text-align:center;color:white">Quiz Details</h2>
         </div> {% endcomment %}
-        {% for i in obj %}
-            <h1>{{ i.question }}</h1>
-        {% endfor %}
+        {% comment %} {% for item in obj %} {% endcomment %}
+        <p style="text-align:center;color:white">  
+        
+            JAAANNNNVIIIIIIIIII
+            
+             {% comment %} <div class="row justify-content-center">
+            <a href="ques1.html"><input type="submit" value="Next"></a>
+                </div> {% endcomment %}
+            <br>
+            
+        
+        {% comment %} {% endfor %} {% endcomment %}
+        </p>
         <p style="color:white">njsxjhbschxbiqwhexsijaiakjxlk,MABZVGHafxfsghgxkjqhkxihOPX</p>
         <p style="color:white">xkanjcsgchgsajxhiewqijsoxakOPKZOPAjizhxghjgshgxkjshklxjlqjxshuxhkql<p>
         <p style="color:white">JANVIIIIIIIIIIIIIIIII</p>
+        {% comment %} <div class="row justify-content-center">
+            <input type="submit" value="Start Now">
+        </div> {% endcomment %} 
         <div class="row justify-content-center">
-            <a href="ques1.html"><input type="submit" value="Start Now"></a>
-            
+            <a href="ques1.html"><input type="submit" value="Next"></a>
         </div>
-
     </div>
 
 
