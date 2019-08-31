@@ -14,6 +14,8 @@ class Personal_Details(models.Model):
     Password = models.CharField(max_length = 50)
     '''widget=forms.PasswordInput(),null=False)'''
 
+
+
 # def my_view(request):
 #     username = request.POST['username']
 #     password = request.POST['password']
@@ -24,6 +26,8 @@ class Personal_Details(models.Model):
         
 #     else:
 #         print("Invalid Credentials!!")
+
+
 
 
         

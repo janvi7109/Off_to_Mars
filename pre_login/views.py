@@ -2,6 +2,7 @@ from django.shortcuts import render
 from .forms import RegistrationForm
 from .forms import LoginForm
 from .models import Personal_Details
+from django.http import HttpResponseRedirect
 # from .forms import RegistrationForm
 # Create your views here.
 def home(request):
@@ -23,9 +24,12 @@ def login(request):
         form = LoginForm(request.POST) 
         if form.is_valid():
             print(form.cleaned_data)
+            print(form.cleaned_data['Email'])
             obj = Personal_Details.objects.get(Email=form.cleaned_data['Email'])
+            # #  = Personal_Details.objects.get(Email=form.cleaned_data['Email'])
             if(obj):
-                print(obj['Age'])
+                if(form.cleaned_data['Password']==obj.Password):
+                    return HttpResponseRedirect("quiz.html")
     else:
         form = LoginForm()
     cont = {'form':form}
@@ -39,5 +43,13 @@ def login(request):
 #     context= {'form': form }
         
 #     return render(request, 'Blog/tvreview.html', context)
+# def quiz(request):
+#     return render(request,'quizes/quiz.html')
+
+# def question(request):
+#     return render(request,'quizes/question.html')
+
+# def ques1(request):
+#     return render(request,'quizes/ques1.html')
 
 

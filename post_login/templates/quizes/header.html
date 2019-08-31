@@ -1,0 +1,122 @@
+<!Doctype html>
+<html lang="en">
+
+<head>
+    <title>Profile</title>
+    <meta charset="utf-8">
+    {% load staticfiles %}
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css" type="text/css">
+    <meta name="viewport" content="width-device-width , initial scale=1.0">
+
+    {% comment %} <style type="text/css">
+        html,
+        body
+        {
+            background-image : url("mars.jpg")
+            height:100%
+        } 
+    </style> {% endcomment %}
+    <style> 
+    body {
+        background-repeat:no-repeat;
+        background-image: url("/static/img/mars1.jpg");
+        {% comment %} background-size: 1125px 633px;  {% endcomment %}
+        }
+        .topnav {
+        background-color: #333;
+        overflow: hidden;
+        }
+
+        /* Style the links inside the navigation bar */
+        .topnav a {
+        float: left;
+        color: #f2f2f2;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 17px;
+        }
+
+        /* Change the color of links on hover */
+        .topnav a:hover {
+        background-color: #DC381E;
+        color: black;
+        }
+
+        /* Add a color to the active/current link */
+        .topnav a.active {
+        background-color: #DC381E;
+        color: white;
+        }
+
+        {% comment %} .middle 
+        {
+            background-color: #F2E2CF;
+            width: 800px; {% endcomment %}
+            {% comment %} border: 15px solid green; {% endcomment %}
+            {% comment %} padding: 100px;
+            margin: 150px;
+            height: 800px;
+        }  {% endcomment %}
+        {% comment %} .container {
+            position: relative;
+            border-radius: 5px;
+            background-color: #F2E2CF;
+            padding: 20px 0 30px 0;
+        } 
+
+        input,
+        .btn {
+        width: 100%;
+        padding: 12px;
+        border: none;
+        border-radius: 4px;
+        margin: 5px 0;
+        opacity: 0.85;
+        display: inline-block;
+        font-size: 17px;
+        line-height: 20px;
+        text-decoration: none; /* remove underline from anchors */
+        }
+
+        input:hover,
+        .btn:hover {
+        opacity: 1;
+        }
+
+        input[type=submit] {
+        background-color: #585755;
+        color: white;
+        cursor: pointer;
+        }
+
+        input[type=submit]:hover {
+        background-color: #DC381E;
+        } {% endcomment %}
+    </style>
+</head>
+
+<body>
+    {% comment %} <h1>HI</h1> {% endcomment %}
+    {% comment %} <div class="container-fluid" style="min-height:95%;">
+    dobu insaan hu mein -laptop
+    </div>  {% endcomment %}
+    <div class="topnav">
+        <a class="active" href="#">Home</a>
+        {% comment %} <a href="#news">News</a> {% endcomment %}
+        <a href="#">Profile</a>
+        <a href="#">Current News</a>
+        {% comment %} <a href="login.html">Login</a> {% endcomment %}
+    </div>
+    {% block content %}
+    {% endblock %}
+
+    
+    {% comment %} <div class="middle">This text is the content of the box. We have added a 50px padding, 20px margin and a 15px green border. Ut enim ad minim
+     veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse 
+    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>  {% endcomment %}
+
+
+</body>
+
+</html>

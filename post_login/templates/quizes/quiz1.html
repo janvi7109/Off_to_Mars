@@ -1,0 +1,92 @@
+{% extends "quizes/header1.html" %}
+
+{% block content %}
+<style>
+.container {
+            position: center;
+            border-radius: 40px;
+            background-color: ##F2BEAB;
+            padding: 40px 20px 50px 160px;
+            height: 5px;
+            margin: 200px;
+            align: center;
+            opacity = 0.1;
+            filter: alpha(opacity=10);
+            align-content:center;
+        } 
+.container1 {
+            position: center;
+            border-radius: 70px;
+            background-color: ##F8DAD0;
+            padding: 40px 20px 50px 50px;
+            height: 700px;
+            margin: 100px;
+            align: center;
+            opacity = 0.1;
+            filter: alpha(opacity=10);
+            align-content:center;
+        } 
+
+        input[type=submit] {
+        background-color: #DC381E;
+        color: white;
+        cursor: pointer;
+        {% comment %} align: center; {% endcomment %}
+        }
+
+        input[type=submit]:hover {
+        background-color: #DC381E;
+        }
+</style>
+<body>
+    <div class="container">
+        <div class="row justify-content-center">
+
+        {% comment %} {% set i=0 %} {% endcomment %}
+        {% comment %} {% for i in range({{ Questions.objects.count }})  %} {% endcomment %}
+        {% comment %} {% for i in range.Questions.objects.count %} {% endcomment %}
+        {% comment %} {% with i=0 %}
+        {% while i<Questions.objects.count: %}
+                <h2 style="text-align:center;color:white">Question : {{ obj.i.question }}</h2>
+                {% i+=1 %}
+        {% endwhile %}
+        
+        {% endwith %} {% endcomment %}
+        <h2 style="text-align:center;color:white">Question : </h2>
+        {% comment %} {% endfor %} {% endcomment %}
+        {% comment %} {% endfor %} {% endcomment %}
+        </div>
+    </div>
+
+    <div class="container1">
+        {% comment %} <div class="row justify-content-center">
+            <h2 style="text-align:center;color:white">Quiz Details</h2>
+        </div> {% endcomment %}
+        {% comment %} {% for item in obj %} {% endcomment %}
+        <p style="text-align:center;color:white">  
+        
+            JAAANNNNVIIIIIIIIII
+            
+             {% comment %} <div class="row justify-content-center">
+            <a href="ques1.html"><input type="submit" value="Next"></a>
+                </div> {% endcomment %}
+            <br>
+            
+        
+        {% comment %} {% endfor %} {% endcomment %}
+        </p>
+        <p style="color:white">njsxjhbschxbiqwhexsijaiakjxlk,MABZVGHafxfsghgxkjqhkxihOPX</p>
+        <p style="color:white">xkanjcsgchgsajxhiewqijsoxakOPKZOPAjizhxghjgshgxkjshklxjlqjxshuxhkql<p>
+        <p style="color:white">JANVIIIIIIIIIIIIIIIII</p>
+        {% comment %} <div class="row justify-content-center">
+            <input type="submit" value="Start Now">
+        </div> {% endcomment %} 
+        <div class="row justify-content-center">
+            <a href="ques1.html"><input type="submit" value="Next"></a>
+        </div>
+    </div>
+
+
+    
+</body>
+{% endblock %}
