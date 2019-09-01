@@ -1,0 +1,41 @@
+{% extends "quizes/header.html" %}
+{% block content %}
+<head>
+    <style>
+    #mainbox 
+    {
+        position: relative;
+        padding :3em;
+        padding-top :2em;
+        border-radius: 40px;
+        height: 20em;
+        width: 30em;
+        margin: auto;
+        margin-top: 10em;
+        border-style: ridge;
+        align-content:center;
+        background-color: rgb(0,0,0,0.4);
+    } 
+    </style>
+</head>
+<body>
+    <div class="container" id="mainbox">
+        <div class="row">
+            <div class="col-12">
+                <p style="color:white;font-size: 2em;"> Your score is:</p>
+            </div>
+        </div>
+        <div>
+            <div class="col-12">
+                <p style="color:white;font-size: 6em;text-align: center">{{result}}</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <p style="color:white;font-size: 1.5em;text-align:right"> in <b>{{time}}</b> seconds</p>
+            </div>
+        </div>
+
+    </div>
+</body>
+{% endblock%}

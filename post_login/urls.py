@@ -8,5 +8,7 @@ urlpatterns = [
     url(r'^ques2.html$', views.ques2 , name="ques2"),
     url(r'^ques3.html$', views.ques3 , name="ques3"),
     url(r'^ques4.html$', views.ques4 , name="ques4"),
+    url(r'^score.html$',views.display_function, name="score"),
+    url(r'^profile.html$',views.profile,name="profile")
     # url(r'^registration.html', views.register, name="registration"),
 ]

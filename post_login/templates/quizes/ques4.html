@@ -3,13 +3,14 @@
 
 {% block content %}
 <style>
-.container2 
+#mainbox
 {
   position: center;
   border-radius: 40px;
-  height: 5px;
-  margin: 200px;
+  height: 20em;
   align-content:center;
+  border:1px solid white;
+  border-style: ridge;
 } 
 input[type=submit] {
 background-color: #DC381E;
@@ -45,8 +46,8 @@ background-color: #DC381E;
   position: absolute;
   top: 0;
   left: 0;
-  height: 25px;
-  width: 25px;
+  height: 1em;
+  width: 1em;
   background-color: #eee;
   border-radius: 50%;
 }
@@ -76,7 +77,7 @@ background-color: #DC381E;
 /* Style the indicator (dot/circle) */
 .container .checkmark:after {
  	top: 9px;
-	left: 9px;
+	/* left: 9px; */
 	width: 8px;
 	height: 8px;
 	border-radius: 50%;
@@ -85,38 +86,43 @@ background-color: #DC381E;
 
 </style>
 <body style="color: white">
-    <div class="container2">
-        <div class="row">
-          <div class="col-10">
-            <h2 style="color:white;font-size: 2em">Question : {{ obj.3.question }}</h2>
+  <div class="row">
+    <div class="col-12">
+      <h2 style="color:white;font-size: 2em">Question : {{ obj.3.question }}</h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <div class="container-fluid">
+        <form action="" method="POST">
+        {% csrf_token %}
+          <div class="row">
+            <div class="col-12">
+              <label class="container" style="color:white"> {{ obj.3.option1 }}
+              <input type="radio" name="radio" id= "o1" value="option1">
+              <span class="checkmark"></span>
+              </label>
+              <label class="container" style="color:white">{{ obj.3.option2 }}
+              <input type="radio" name="radio" id= "o2" value="option2">
+              <span class="checkmark"></span>
+              </label>
+              <label class="container" style="color:white">{{ obj.3.option3 }}
+              <input type="radio" name="radio" id= "o3" value="option3">
+              <span class="checkmark"></span>
+              </label>
+              <label class="container" style="color:white">{{ obj.3.option4 }}
+              <input type="radio" name="radio" id= "o4" value="option4">
+              <span class="checkmark"></span>
+              </label>
+            </div>
+            <div class="col-12">
+                <button class="btn custom" type="submit" onclick="window.location.href='quiz\\ques1.html';">Next</button>
+            </div>
           </div>
         </div>
-        <div class="row">
-          <div class="col-10">
-                <form action="" method="POST">
-                        {% csrf_token %}
-                        <label class="container" style="color:white"> {{ obj.3.option1 }}
-                        <input type="radio" name="radio" id= "o1" value="option1">
-                        <span class="checkmark"></span>
-                        </label>
-                        <label class="container" style="color:white">{{ obj.3.option2 }}
-                        <input type="radio" name="radio" id= "o2" value="option2">
-                        <span class="checkmark"></span>
-                        </label>
-                        <label class="container" style="color:white">{{ obj.3.option3 }}
-                        <input type="radio" name="radio" id= "o3" value="option3">
-                        <span class="checkmark"></span>
-                        </label>
-                        <label class="container" style="color:white">{{ obj.3.option4 }}
-                        <input type="radio" name="radio" id= "o4" value="option4">
-                        <span class="checkmark"></span>
-                        </label>
-                        <div class="row justify-content-center">
-                            <a href="ques2.html"><input type="submit" value="Next"></a>
-                        </div>
-                    </form>
-          </div>
-        </div>
-    </div>    
+        </form>
+      </div>
+    </div>
+  </div>    
 </body>
 {% endblock %}

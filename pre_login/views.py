@@ -26,13 +26,13 @@ def login(request):
     if request.method == "POST":
         form = LoginForm(request.POST) 
         if form.is_valid():
-            print("hi")
             input_data = form.cleaned_data
             try:
                 obj = Personal_Details.objects.get(Email=input_data['Email'])
                 if(obj.Password == input_data['Password']):
-                    user = {"user":obj.username}
-                    return render(request,'quizes/quiz.html',user)
+                    request.session['Email'] = obj.Email
+                    request.session['username'] = obj.username
+                    return HttpResponseRedirect("/quiz")
             except:
                 print("Unidentified User")
     else:

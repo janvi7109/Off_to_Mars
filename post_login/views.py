@@ -1,41 +1,30 @@
 from django.shortcuts import render
 from .forms import QuestionForm
 from .models import Questions
+from pre_login.forms import LoginForm
+from pre_login.forms import RegistrationForm
+from pre_login.models import Personal_Details
 from django.http import HttpResponseRedirect
-# Create your views here.
+import time
 score = [0, 0, 0, 0]
 count = [0, 0, 0, 0]
+x = []
+start = [0]
+stop = [0]
 def quiz(request):
-    return render(request,'quizes/quiz.html')
 
-# def question(request):
-#     return render(request,'quizes/question.html')
-
+    check = {"user":request.session['username']}
+    return render(request,'quizes/quiz.html',check)
 def question(request):
-    # if request.method == "GET":
-    #     form = QuestionForm(request.GET)
-    #     if form.is_valid():
-    #         obj = Questions.objects.all();
-    #         # if obj:
-    #         #     print(obj.answer)
-    #         # detail_item = form.save(commit="False")
-    #         # detail_item.save()
-    # else:
-    #     form = QuestionForm()   
-    # cont = {'form':form}
     return render(request,'quizes/question.html')
-
 def ques1(request):
-    # score = 0
     data = Questions.objects.all()
     dictionary = {
         "obj": data 
     }
     if request.method == "POST":
-        print("HELLO")
         form = QuestionForm(request.POST)
-        if form.is_valid():
-            print("HII")
+        x.append(time.time())
         for i in request.POST:
             print(i)
         print(request.POST)
@@ -47,7 +36,6 @@ def ques1(request):
         else:
             if count[0]>=1 and score[0]==1:
                 score[0]-=1
-
         print(score)
         return HttpResponseRedirect("ques2.html")
     else:
@@ -58,18 +46,12 @@ def ques1(request):
 
 
 def ques2(request):
-    # score = 0
     data = Questions.objects.all()
     dictionary = {
         "obj": data 
     }
     if request.method == "POST":
         form = QuestionForm(request.POST)
-        # if form.is_valid():
-        #     print("HII")
-        # for i in request.POST:
-        #     print(i)
-        # print(request.POST['radio'])
         print(data[1].question)
         if(request.POST['radio']==data[1].answer):
             if score[1]<1:
@@ -81,26 +63,18 @@ def ques2(request):
 
         print(score)
         return HttpResponseRedirect("ques3.html")
-        # return ques3(request)
-        # return render(request,'quizes/ques3.html',dictionary,{'form':form})
     else:
         form = QuestionForm()
     cont = {'form':form}
     return render(request,'quizes/ques2.html',dictionary,cont)
 
 def ques3(request):
-    # score = 0
     data = Questions.objects.all()
     dictionary = {
         "obj": data 
     }
     if request.method == "POST":
         form = QuestionForm(request.POST)
-        # if form.is_valid():
-        #     print("HII")
-        # for i in request.POST:
-        #     print(i)
-        # print(request.POST['radio'])
         print(data[2].question)
         if(request.POST['radio']==data[2].answer):
             if score[2]<1:
@@ -113,41 +87,47 @@ def ques3(request):
 
         print(score)
         return HttpResponseRedirect("ques4.html")
-        # return ques4(request)
-        # return render(request,'quizes/ques4.html',dictionary,{'form':form})
     else:
         form = QuestionForm()
     cont = {'form':form}
     return render(request,'quizes/ques3.html',dictionary,cont)
 
 def ques4(request):
-    # score = 0
     data = Questions.objects.all()
     dictionary = {
         "obj": data 
     }
     if request.method == "POST":
         form = QuestionForm(request.POST)
-        # if form.is_valid():
-        #     print("HII")
-        # for i in request.POST:
-        #     print(i)
-        # print(request.POST['radio'])
         print(data[3].question)
         if(request.POST['radio']==data[3].answer):
             if score[3]<1:
                 score[3] += 1
-                count[3] +=1
+                count[3] += 1
         else:
             if count[3]>=1 and score[3]==1:
                 score[3]-=1
-        
-
-        print(score)
-        final = score[0]+score[1]+score[2]+score[3]
-        print(final)
-        # return HttpResponseRedirect("ques4.html")
+        start[0] = x[0]
+        stop[0] = time.time()
+        request.session['time'] = stop[0]-start[0]
+        print(request.session['time'])
+        return HttpResponseRedirect("score.html")
     else:
         form = QuestionForm()
     cont = {'form':form}
     return render(request,'quizes/ques4.html',dictionary,cont)
+
+def display_function(request):
+    
+    result = 0
+    for i in score:
+        result += i
+    request.session['score'] = result
+    print(result)
+    return render(request,'quizes/score.html',{"result":request.session['score'], "time": request.session['time']})
+
+def profile(request):
+    info = Personal_Details.objects.get(Email=request.session['Email'])
+    details = {"score" : request.session['score'], "time": request.session['time'], "username" : info.username, "Age" : info.Age, "City":
+    info.City, "State": info.State, "Country" : info.Country, "Occupation" : info.Occupation}
+    return render(request,'quizes/profile.html', details)

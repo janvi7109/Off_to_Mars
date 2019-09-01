@@ -13,48 +13,108 @@
         background-repeat:no-repeat;
         background-image: url("/static/img/question.jpg");
         }
-        ul {
-        position: relative;
-        list-style-type: none;
-        margin: 0;
-        padding: 0;
-        left: 1400px;
-        width: 0px;
-        top:100px;
-        background-color: #EB600C;
+        
+        /* .row > div
+        {
+            border:0.1em solid white;
+        }   */
+        .custom
+        {
+            color: white;
+            background-color: #DC381E;
+            font-size:1.25em;
+            opacity: 1;
+            width: 5em;
         }
-
-        li a {
-        display: block;
-        color: white;
-        padding: 5px 26px;
-        text-decoration: none;
-        border-color: black;
-        width: 10px;
-        height: 30px;
+        button span 
+        {
+            max-width: 0;
+            -webkit-transition: max-width 1s;
+            transition: max-width 0.1s;
+            display: inline-block;
+            vertical-align: top;
+            white-space: nowrap;
+            overflow: hidden;
         }
-
-        li a.active {
-        background-color: #1D1C1B;
-        color: white;
+        button:hover span
+        {
+            max-width:10em;
         }
-        li a:hover:not(.active) {
-        background-color: #555;
-        color: white;
-        }
-        .fas fa-file-alt {
-            width: 50px !important;
-            height: 50px !important;
+        .numpad
+        {
+            padding:0.25em;
         }
     </style>
 </head>
 <body>
-    <ul>
-    <li><a  href="#"><i class="fas fa-file-alt"> Instruction</i></a></li>
-    <br>
-    <li><a href="#"><i class="fas fa-window-close"> Quit</i></a></li>
-    </ul>
-    {% block content %}
-    {% endblock %}
+    <div class="container-fluid" style="margin-top:8em">
+        <div class="row">
+            <div class="col-3">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-12">
+                            <p style="text-align: center;font-size: 1.5em;">Questions Pane</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-4 numpad">
+                            <button class="btn custom">Q1</button>
+                        </div>
+                        <div class="col-4 numpad">
+                            <button class="btn custom">Q2</button>
+                        </div>
+                        <div class="col-4 numpad">
+                            <button class="btn custom">Q3</button>
+                        </div>    
+                    </div>
+                    <div class="row">
+                        <div class="col-4 numpad">
+                            <button class="btn custom">Q4</button>
+                        </div>        
+                        <div class="col-4 numpad">
+                            <button class="btn custom">Q5</button>
+                        </div>        
+                        <div class="col-4 numpad">
+                            <button class="btn custom">Q6</button>
+                        </div>        
+                    </div>
+                    <div class="row">
+                        <div class="col-4 numpad">
+                            <button class="btn custom">Q7</button>
+                        </div>        
+                        <div class="col-4 numpad">
+                            <button class="btn custom">Q8</button>
+                        </div>        
+                        <div class="col-4 numpad">
+                            <button class="btn custom">Q9</button>
+                        </div>        
+                    </div>
+                    <div class="row">
+                            <div class="col-4 numpad">
+                            </div>        
+                            <div class="col-4 numpad">
+                                <button class="btn custom">Q10</button>
+                            </div>        
+                            <div class="col-4 numpad">
+                            </div>        
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <button class="btn" onclick="window.location.href='/quiz'"><img src="/static/img/instructions.png" style="height:2em"><span style="color:white">Read the instructions.</span></button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <button class="btn" onclick="window.location.href='/quiz/score.html'"><img src="/static/img/finish.png" style="height:2.5em"><span style="color:white">Click to finish quiz.</span></button>    
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-9">
+                {% block content %}
+                {% endblock %}
+            </div>
+        </div>
+    </div>
 </body>
 </html>

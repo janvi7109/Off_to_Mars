@@ -1,0 +1,96 @@
+{% extends "quizes/header.html" %}
+{% block content %}  
+<style>
+    #mainbox 
+    {
+        position: relative;
+        padding :3em;
+        padding-top :2em;
+        border-radius: 40px;
+        height: 25em;
+        width: 25em;
+        margin: auto;
+        margin-top: 3em;
+        border-style: ridge;
+        align-content:center;
+        background-color: rgb(0,0,0,0.4);
+    }
+    .row > div
+    {
+        border:0.1em solid white;
+    }
+    .heading
+    {
+        text-align: right;
+    }
+    </style>
+</head>
+<body style="font-size: 1.25em;">
+    <div class="container" id="mainbox">
+        <div class="row">
+            <div class="col-4 heading">
+                <p style="color:white;">Username:</p>
+            </div>
+            <div class="col-8">
+                <p style="color:white;">{{ username }}</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-4 heading">
+                <p style="color:white;">Age:</p>
+            </div>
+            <div class="col-8">
+                <p style="color:white;">{{ Age }}</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-4 heading">
+                <p style="color:white;">City:</p>
+            </div>
+            <div class="col-8">
+                <p style="color:white;">{{ City }}</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-4 heading">
+                <p style="color:white;">State:</p>
+            </div>
+            <div class="col-8">
+                <p style="color:white;">{{ State }}</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-4 heading">
+                <p style="color:white;">Country:</p>
+            </div>
+            <div class="col-8">
+                <p style="color:white;">{{ Country }}</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-4 heading">
+                <p style="color:white;">Occupation:</p>
+            </div>
+            <div class="col-8">
+                <p style="color:white;">{{ Occupation }}</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-4 heading">
+                <p style="color:white;">Score:</p>
+            </div>
+            <div class="col-8">
+                <p style="color:white;">{{ score }}</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-4 heading">
+                <p style="color:white;">Time:</p>
+            </div>
+            <div class="col-8">
+                <p style="color:white;">{{ time }}</p>
+            </div>
+        </div>
+    </div>
+</body>
+{% endblock %}
