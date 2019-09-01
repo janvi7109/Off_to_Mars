@@ -5,6 +5,7 @@ from pre_login.forms import LoginForm
 from pre_login.forms import RegistrationForm
 from pre_login.models import Personal_Details
 from django.http import HttpResponseRedirect
+from django.utils.datastructures import MultiValueDictKeyError
 import time
 score = [0, 0, 0, 0]
 count = [0, 0, 0, 0]
@@ -25,19 +26,17 @@ def ques1(request):
     if request.method == "POST":
         form = QuestionForm(request.POST)
         x.append(time.time())
-        for i in request.POST:
-            print(i)
-        print(request.POST)
-        print(data[0].question)
-        if(request.POST['radio']==data[0].answer):
-            if score[0]<1:
-                score[0] += 1
-                count[0]+=1
-        else:
-            if count[0]>=1 and score[0]==1:
-                score[0]-=1
-        print(score)
-        return HttpResponseRedirect("ques2.html")
+        try:
+            if(request.POST['radio']==data[0].answer):
+                if score[0]<1:
+                    score[0] += 1
+                    count[0]+=1
+            else:
+                if count[0]>=1 and score[0]==1:
+                    score[0]-=1
+            return HttpResponseRedirect("ques2.html")
+        except MultiValueDictKeyError:
+            return HttpResponseRedirect("ques2.html")
     else:
         form = QuestionForm()
     cont = {'form':form}
@@ -52,17 +51,17 @@ def ques2(request):
     }
     if request.method == "POST":
         form = QuestionForm(request.POST)
-        print(data[1].question)
-        if(request.POST['radio']==data[1].answer):
-            if score[1]<1:
-                score[1] += 1
-                count[1]+=1
-        else:
-            if count[1]>=1 and score[1]==1:
-                score[1]-=1
-
-        print(score)
-        return HttpResponseRedirect("ques3.html")
+        try:
+            if(request.POST['radio']==data[1].answer):
+                if score[1]<1:
+                    score[1] += 1
+                    count[1]+=1
+            else:
+                if count[1]>=1 and score[1]==1:
+                    score[1]-=1
+            return HttpResponseRedirect("ques3.html")
+        except MultiValueDictKeyError:
+            return HttpResponseRedirect("ques3.html")
     else:
         form = QuestionForm()
     cont = {'form':form}
@@ -75,18 +74,17 @@ def ques3(request):
     }
     if request.method == "POST":
         form = QuestionForm(request.POST)
-        print(data[2].question)
-        if(request.POST['radio']==data[2].answer):
-            if score[2]<1:
-                score[2] += 1
-                count[2] +=1
-            
-        else:
-            if count[2]>=1 and score[2]==1:
-                score[2]-=1
-
-        print(score)
-        return HttpResponseRedirect("ques4.html")
+        try:
+            if(request.POST['radio']==data[2].answer):
+                if score[2]<1:
+                    score[2] += 1
+                    count[2] +=1
+            else:
+                if count[2]>=1 and score[2]==1:
+                    score[2]-=1
+            return HttpResponseRedirect("ques4.html")
+        except MultiValueDictKeyError:
+            return HttpResponseRedirect("ques4.html")
     else:
         form = QuestionForm()
     cont = {'form':form}
@@ -99,19 +97,21 @@ def ques4(request):
     }
     if request.method == "POST":
         form = QuestionForm(request.POST)
-        print(data[3].question)
-        if(request.POST['radio']==data[3].answer):
-            if score[3]<1:
-                score[3] += 1
-                count[3] += 1
-        else:
-            if count[3]>=1 and score[3]==1:
-                score[3]-=1
-        start[0] = x[0]
-        stop[0] = time.time()
-        request.session['time'] = stop[0]-start[0]
-        print(request.session['time'])
-        return HttpResponseRedirect("score.html")
+        try:
+            if(request.POST['radio']==data[3].answer):
+                if score[3]<1:
+                    score[3] += 1
+                    count[3] += 1
+            else:
+                if count[3]>=1 and score[3]==1:
+                    score[3]-=1
+            start[0] = x[0]
+            stop[0] = time.time()
+            request.session['time'] = stop[0]-start[0]
+            print(request.session['time'])
+            return HttpResponseRedirect("score.html")
+        except MultiValueDictKeyError:
+            return HttpResponseRedirect("score.html")
     else:
         form = QuestionForm()
     cont = {'form':form}
