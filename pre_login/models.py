@@ -12,8 +12,8 @@ class Personal_Details(models.Model):
     Country = models.CharField(max_length = 30)
     Occupation = models.CharField(max_length = 30)
     Password = models.CharField(max_length = 50)
-    '''widget=forms.PasswordInput(),null=False)'''
-
+    Score = models.IntegerField(default=0)
+    Time = models.FloatField(default=0)
     def __str__(self):
         return self.Email
 

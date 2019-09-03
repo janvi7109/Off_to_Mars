@@ -40,7 +40,19 @@
     opacity: 0.85;
 }
 </style>
-<body style="color: white">
+<script>
+    $(document).ready(function(){
+        if(performance.navigation.type == 2){
+            location.reload(true);
+        }
+        if({{time_taken}} != 0)
+        {
+            $("#repeat").css("visibility","visible");
+            $(".custom").hide();
+        }
+    });
+</script>
+<body style="color: white" onload="document.refresh()">
     <div class="container-fluid container_main" style>
         <div class="row">
             <div class="col-8 heading">
@@ -85,7 +97,11 @@
         </div>
         <div class="row">
             <div class="col-8">
-                <button class="btn custom" onclick="window.location.href='/quiz/ques1.html'">Ready</button>
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    <button class="btn custom" type="submit" style="width: 5em;">Ready</button>
+                </form>
+                <p style="margin-left:4em;margin-top:1em;visibility: hidden;" id="repeat"><i>You have aldready given you quiz. View your results in your Profile.</i></p>
             </div>
             <div class="col-4 highlight"></div>
         </div>

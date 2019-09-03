@@ -1,0 +1,35 @@
+{% extends "page/header.html" %}
+{{% block content %}
+<head>
+    <style>
+        #mainbox 
+        {
+            position: relative;
+            padding :3em;
+            padding-top :2em;
+            /* border-radius: 40px; */
+            height: 5em;
+            width: 30em;
+            margin: auto;
+            margin-top: 10em;
+            /* border-style: ridge; */
+            align-content:center;
+            /* background-color: rgb(0,0,0,0.4); */
+        } 
+    </style>
+</head>
+<body style="color: white">
+    <div class="container" id="mainbox">
+        <div class="row">
+            <div class="col-12">
+                <p style="font-size: 2em;text-align: center">You have been logged out</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <p style="font-size: 3em; text-align: center">{{user}}</p>
+            </div>
+        </div>
+    </div>
+</body>
+{% endblock  %}}

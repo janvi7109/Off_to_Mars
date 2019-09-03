@@ -6,6 +6,8 @@
     {% load staticfiles %}
     <link rel="stylesheet" href="/static/css/bootstrap.min.css" type="text/css">
     <meta name="viewport" content="width-device-width , initial scale=1.0">
+    <script src="{% static 'js/jquery-3.4.1.js'%}"></script>
+    <script src="{% static 'js/rango-jquery.js'%}"></script>
     <style> 
     body
     {
@@ -38,12 +40,24 @@
     }
     </style>
 </head>
+<script>
+    if(performance.navigation.type == 2){
+        location.reload(true);
+    }
+    $(document).ready(function(){
+        $('a').each(function(){
+            if ($(this).prop('href') == window.location.href) {
+                $(this).addClass('active');
+            }
+        });
+    });
+</script>
 <body>
     <div class="topnav">
-        <a class="active" href="#">Home</a>
+        <a href="/quiz/">Home</a>
         <a href="#news">News</a> 
         <a href="/quiz/profile.html">Profile</a>
-        <a href="/">Login</a> 
+        <a href="/quiz/LoggedOut.html">Logout</a> 
     </div>
     {% block content %}
     {% endblock %}

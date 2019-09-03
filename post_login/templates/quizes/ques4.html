@@ -41,7 +41,6 @@ background-color: #DC381E;
   cursor: pointer;
 }
 
-/* Create a custom radio button */
 .checkmark {
   position: absolute;
   top: 0;
@@ -52,32 +51,26 @@ background-color: #DC381E;
   border-radius: 50%;
 }
 
-/* On mouse-over, add a grey background color */
 .container:hover input ~ .checkmark {
   background-color: #ccc;
 }
 
-/* When the radio button is checked, add a blue background */
 .container input:checked ~ .checkmark {
   background-color: #2196F3;
 }
 
-/* Create the indicator (the dot/circle - hidden when not checked) */
 .checkmark:after {
   content: "";
   position: absolute;
   display: none;
 }
 
-/* Show the indicator (dot/circle) when checked */
 .container input:checked ~ .checkmark:after {
   display: block;
 }
 
-/* Style the indicator (dot/circle) */
 .container .checkmark:after {
  	top: 9px;
-	/* left: 9px; */
 	width: 8px;
 	height: 8px;
 	border-radius: 50%;
@@ -88,7 +81,7 @@ background-color: #DC381E;
 <body style="color: white">
   <div class="row">
     <div class="col-12">
-      <h2 style="color:white;font-size: 2em">Question : {{ obj.3.question }}</h2>
+      <h2 style="color:white;font-size: 2.5em">Question : {{ obj.3.question }}</h2>
     </div>
   </div>
   <div class="row">
@@ -116,7 +109,7 @@ background-color: #DC381E;
               </label>
             </div>
             <div class="col-12">
-                <button class="btn custom" type="submit" onclick="window.location.href='quiz\\ques1.html';">Next</button>
+                <button class="btn custom" type="submit" onclick="window.location.href='quiz\\ques1.html'; " style="width:5em">Next</button>
             </div>
           </div>
         </div>

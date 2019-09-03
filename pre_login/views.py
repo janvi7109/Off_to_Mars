@@ -6,8 +6,6 @@ from django.http import HttpResponseRedirect
 from django.contrib import messages
 # from .forms import RegistrationForm
 # Create your views here.
-def home(request):
-    return render(request,'page/login.html')
 
 def register(request):
     if request.method == "POST":
@@ -31,11 +29,19 @@ def login(request):
                 obj = Personal_Details.objects.get(Email=input_data['Email'])
                 if(obj.Password == input_data['Password']):
                     request.session['Email'] = obj.Email
-                    request.session['username'] = obj.username
+                    request.session['time'] = obj.Time
+                    request.session['score'] = obj.Score
+                    print(request.session)
                     return HttpResponseRedirect("/quiz")
             except:
                 print("Unidentified User")
     else:
+        try:
+            del request.session['Email']
+            del request.session['score']
+            del request.session['time']
+        except KeyError:
+            pass
         form = LoginForm()
     cont = {'form':form}
     return render(request,'page/login.html',cont)

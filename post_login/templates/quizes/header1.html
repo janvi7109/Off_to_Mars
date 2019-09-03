@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="/static/css/bootstrap.min.css" type="text/css">
     <meta name="viewport" content="width-device-width , initial scale=1.0">
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script src="{% static 'js/jquery-3.4.1.js'%}"></script>
+    <script src="{% static 'js/rango-jquery.js'%}"></script>
     <style> 
     body {
         background-repeat:no-repeat;
@@ -24,7 +26,7 @@
             background-color: #DC381E;
             font-size:1.25em;
             opacity: 1;
-            width: 5em;
+            width: 90%;
         }
         button span 
         {
@@ -58,18 +60,18 @@
                     </div>
                     <div class="row">
                         <div class="col-4 numpad">
-                            <button class="btn custom">Q1</button>
+                            <button onclick="window.location.href='/quiz/ques1.html'" class="btn custom">Q1</button>
                         </div>
                         <div class="col-4 numpad">
-                            <button class="btn custom">Q2</button>
+                            <button onclick="window.location.href='/quiz/ques2.html'" class="btn custom">Q2</button>
                         </div>
                         <div class="col-4 numpad">
-                            <button class="btn custom">Q3</button>
+                            <button onclick="window.location.href='/quiz/ques3.html'" class="btn custom">Q3</button>
                         </div>    
                     </div>
                     <div class="row">
                         <div class="col-4 numpad">
-                            <button class="btn custom">Q4</button>
+                            <button onclick="window.location.href='/quiz/ques4.html'" class="btn custom">Q4</button>
                         </div>        
                         <div class="col-4 numpad">
                             <button class="btn custom">Q5</button>

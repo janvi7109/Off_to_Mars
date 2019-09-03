@@ -13,12 +13,19 @@ x = []
 start = [0]
 stop = [0]
 def quiz(request):
-
-    check = {"user":request.session['username']}
+    if 'Email' not in request.session:
+        return HttpResponseRedirect("/quiz/LoggedOut.html")
+    obj = Personal_Details.objects.get(Email=request.session['Email'])
+    check = {"user":obj.username,"time_taken":obj.Time}
+    if request.method == "POST":
+        print('Hi')
+        print(request.session['time'])
+        if(request.session['time'] == 0):
+            return HttpResponseRedirect("/quiz/ques1.html")
     return render(request,'quizes/quiz.html',check)
-def question(request):
-    return render(request,'quizes/question.html')
 def ques1(request):
+    if 'Email' not in request.session:
+        return HttpResponseRedirect("/quiz/LoggedOut.html")
     data = Questions.objects.all()
     dictionary = {
         "obj": data 
@@ -45,6 +52,8 @@ def ques1(request):
 
 
 def ques2(request):
+    if 'Email' not in request.session:
+        return HttpResponseRedirect("/quiz/LoggedOut.html")
     data = Questions.objects.all()
     dictionary = {
         "obj": data 
@@ -68,6 +77,8 @@ def ques2(request):
     return render(request,'quizes/ques2.html',dictionary,cont)
 
 def ques3(request):
+    if 'Email' not in request.session:
+        return HttpResponseRedirect("/quiz/LoggedOut.html")
     data = Questions.objects.all()
     dictionary = {
         "obj": data 
@@ -91,6 +102,8 @@ def ques3(request):
     return render(request,'quizes/ques3.html',dictionary,cont)
 
 def ques4(request):
+    if 'Email' not in request.session:
+        return HttpResponseRedirect("/quiz/LoggedOut.html")
     data = Questions.objects.all()
     dictionary = {
         "obj": data 
@@ -117,17 +130,36 @@ def ques4(request):
     cont = {'form':form}
     return render(request,'quizes/ques4.html',dictionary,cont)
 
-def display_function(request):
-    
+def display_function(request):   
+    if 'Email' not in request.session:
+        return HttpResponseRedirect("/quiz/LoggedOut.html")
     result = 0
     for i in score:
         result += i
     request.session['score'] = result
+    print(start[0],stop[0])
+    Personal_Details.objects.filter(Email=request.session['Email']).update(Time=request.session['time'])
+    Personal_Details.objects.filter(Email=request.session['Email']).update(Score=request.session['score'])    
     print(result)
+    print(request.session['time'])
     return render(request,'quizes/score.html',{"result":request.session['score'], "time": request.session['time']})
 
 def profile(request):
+    if 'Email' not in request.session:
+        return HttpResponseRedirect("/quiz/LoggedOut.html")
     info = Personal_Details.objects.get(Email=request.session['Email'])
-    details = {"score" : request.session['score'], "time": request.session['time'], "username" : info.username, "Age" : info.Age, "City":
+    details = {"score" : info.Score, "time": info.Time, "username" : info.username, "Age" : info.Age, "City":
     info.City, "State": info.State, "Country" : info.Country, "Occupation" : info.Occupation}
     return render(request,'quizes/profile.html', details)
+
+def loggedOut(request):
+    try:
+        obj =  Personal_Details.objects.get(Email=request.session['Email'])
+        back = {"user":obj.username+"."}
+        del request.session['Email']
+        del request.session['time']
+        del request.session['score']
+    except KeyError:
+        back = {"user":""}
+        pass
+    return render(request,'quizes/LoggedOut.html',back)
