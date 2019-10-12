@@ -10,6 +10,7 @@ import time
 score = [0, 0, 0, 0]
 count = [0, 0, 0, 0]
 x = []
+p = [-1]
 start = [0]
 stop = [0]
 def quiz(request):
@@ -23,6 +24,13 @@ def quiz(request):
         if(request.session['time'] == 0):
             return HttpResponseRedirect("/quiz/ques1.html")
     return render(request,'quizes/quiz.html',check)
+
+# def ques(request):
+#     x.append(time.time())
+#     if request.method == "POST":
+#         form = QuestionForm(request.POST)
+    
+
 def ques1(request):
     if 'Email' not in request.session:
         return HttpResponseRedirect("/quiz/LoggedOut.html")
@@ -33,6 +41,7 @@ def ques1(request):
     if request.method == "POST":
         form = QuestionForm(request.POST)
         x.append(time.time())
+        p[0] += 1
         try:
             if(request.POST['radio']==data[0].answer):
                 if score[0]<1:
@@ -118,7 +127,7 @@ def ques4(request):
             else:
                 if count[3]>=1 and score[3]==1:
                     score[3]-=1
-            start[0] = x[0]
+            start[0] = x[p[0]]
             stop[0] = time.time()
             request.session['time'] = stop[0]-start[0]
             print(request.session['time'])
